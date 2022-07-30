@@ -35,7 +35,6 @@ Only one valid answer exists.
 #include<vector>
 using namespace std;
 
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -47,23 +46,20 @@ public:
                 if (target == nums[j]+nums[i])
                 {
                     return indices={i,j};
-                }
-                
-            }
-            
+                }   
+            }          
         }
         return indices;
     }
 };
+
 
 // Driver Function
 int main()
 {
     vector<int> nums={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28};
     int target=3;
-
     Solution s;
-
     vector<int> indices = s.twoSum(nums,target);
     cout << "1st index:"<<indices[0]<<"\n2nd index:"<<indices[1]<<endl;
 
