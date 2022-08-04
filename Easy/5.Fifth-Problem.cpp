@@ -35,7 +35,7 @@ class Solution
 public:
     string longestPalindrome(string s)
     {
-        if(s.size() == 1 || s.size() == 0)
+        if (s.size() == 1 || s.size() == 0)
             return s;
         length = s.size();
         for (int i = 0; i < length / 2; i++)
@@ -68,7 +68,7 @@ public:
     {
         for (int j = 0; j < length / 2 + 1 && leftPivot >= 0 && rightPivot < length; j++)
         {
-            //cout << "leftPivot: " << leftPivot << " rightPivot: " << rightPivot << endl;
+            // cout << "leftPivot: " << leftPivot << " rightPivot: " << rightPivot << endl;
 
             if (s[leftPivot] == s[rightPivot])
             {
@@ -82,14 +82,13 @@ public:
         }
         // temp = s.substr(leftPivot, rightPivot - leftPivot);
         temp = "";
-        for (int i = leftPivot + 1; i < rightPivot; i++)
+        if (rightPivot - leftPivot > result.size())
         {
-            temp += s[i];
-        }
-        if (result.size() < temp.size())
-        {
+            for (int i = leftPivot + 1; i < rightPivot; i++)
+            {
+                temp += s[i];
+            }
             result = temp;
-            
         }
     }
 };
