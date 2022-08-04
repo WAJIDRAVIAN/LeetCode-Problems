@@ -9,7 +9,7 @@ And then read line by line: "PAHNAPLSIIGYIR"
 Write the code that will take a string and make this conversion given a number of rows:
 
 string convert(string s, int numRows);
- 
+
 
 Example 1:
 
@@ -28,7 +28,7 @@ Example 3:
 
 Input: s = "A", numRows = 1
 Output: "A"
- 
+
 
 Constraints:
 
@@ -42,18 +42,62 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 
 using namespace std;
 
-
-class Solution {
+class Solution
+{
 public:
-    string convert(string s, int numRows) {
-        
+    string convert(string s, int numRows)
+    {
+        if (numRows <= 1)
+            return s;  
+        string zigzag="";
+        string* arr = new string[numRows];
+        int count = 0;
+        bool check = false;
+
+        for (int i = 0; i < numRows; i++)
+        {
+            arr[i] = "";
+        }
+        for (int i = 0; i < s.size(); i++)
+        {
+            if(check){
+                arr[count].push_back(s[i]);
+                if(count == numRows-1){
+                    check = false;
+                    count = numRows-2;
+                }
+                else
+                {
+                    count++;
+                }
+            }
+            else{
+                arr[count].push_back(s[i]);
+                if(count == 0){
+                    check = true;
+                    count = 1;
+                }
+                else
+                {
+                    count--;
+                }
+                
+            }
+        }
+        for (int i = 0; i < numRows; i++)
+        {
+            zigzag += arr[i];
+        }
+        return zigzag;
     }
 };
 
-
-//Driver program
-int main(){
-
-
+// Driver program
+int main()
+{
+Solution s;
+string s1 = "PAYPALISHIRING";
+int numRows = 4;
+cout << s.convert(s1, numRows) << endl;
     return 0;
 }
