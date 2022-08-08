@@ -38,18 +38,19 @@ public:
     int maxArea(vector<int> &height)
     {
         int size = height.size();
-        if(size==2){
-            if(height[0]>height[1])
-            return height[1];
+        if (size == 2)
+        {
+            if (height[0] > height[1])
+                return height[1];
             else
-            return height[0];
+                return height[0];
         }
 
         int max1 = 0;
-        
+
         int area = -1;
         int startIndex = 0;
-        int endIndex = size -1;
+        int endIndex = size - 1;
         for (int i = 0; i < size; i++)
         {
             // calculate last row
@@ -58,7 +59,7 @@ public:
                 max1 = height[startIndex] * (endIndex - startIndex);
                 startIndex++;
             }
-            else if(startIndex != endIndex)
+            else if (startIndex != endIndex)
             {
                 max1 = height[endIndex] * (endIndex - startIndex);
                 endIndex--;
@@ -76,33 +77,8 @@ public:
 // Driver function definition
 int main()
 {
-    vector<int> height = {2,1};
+    vector<int> height = {2, 1};
     Solution s;
-    cout<< s.maxArea(height)<<endl;
+    cout << s.maxArea(height) << endl;
     return 0;
 }
-
-/*
-
-class Solution {
-public:
-    int maxArea(vector<int>& height) {
-        int max = 0;
-        int area = 0;
-        for (int i = 0; i < height.size(); i++) {
-            for(int j = i+1; j < height.size(); j++) {
-                if(height[i]< height[j]) {
-                    area= height[i]* (j-i);
-                }
-                else{
-                    area= height[j]* (j-i);
-                }
-                if(area>max){
-                    max = area;
-                }
-            }
-        }
-        return max;
-    }
-};
-*/
